@@ -1,21 +1,21 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   AssetService,
   ContractAgreementService,
   TransferProcessService
 } from "../../../mgmt-api-client";
-import {from, Observable, of} from "rxjs";
+import { from, Observable, of } from "rxjs";
 import { Asset, ContractAgreement, TransferProcessInput, IdResponse } from "../../../mgmt-api-client/model";
-import {ContractOffer} from "../../models/contract-offer";
-import {filter, first, map, switchMap, tap} from "rxjs/operators";
-import {NotificationService} from "../../services/notification.service";
+import { ContractOffer } from "../../models/contract-offer";
+import { filter, first, map, switchMap, tap } from "rxjs/operators";
+import { NotificationService } from "../../services/notification.service";
 import {
   CatalogBrowserTransferDialog
 } from "../catalog-browser-transfer-dialog/catalog-browser-transfer-dialog.component";
-import {MatDialog} from "@angular/material/dialog";
-import {CatalogBrowserService} from "../../services/catalog-browser.service";
-import {Router} from "@angular/router";
-import {TransferProcessStates} from "../../models/transfer-process-states";
+import { MatDialog } from "@angular/material/dialog";
+import { CatalogBrowserService } from "../../services/catalog-browser.service";
+import { Router } from "@angular/router";
+import { TransferProcessStates } from "../../models/transfer-process-states";
 
 interface RunningTransferProcess {
   processId: string;
@@ -35,13 +35,13 @@ export class ContractViewerComponent implements OnInit {
   private pollingHandleTransfer?: any;
 
   constructor(private contractAgreementService: ContractAgreementService,
-              private assetService: AssetService,
-              public dialog: MatDialog,
-              @Inject('HOME_CONNECTOR_STORAGE_ACCOUNT') private homeConnectorStorageAccount: string,
-              private transferService: TransferProcessService,
-              private catalogService: CatalogBrowserService,
-              private router: Router,
-              private notificationService: NotificationService) {
+    private assetService: AssetService,
+    public dialog: MatDialog,
+    @Inject('HOME_CONNECTOR_STORAGE_ACCOUNT') private homeConnectorStorageAccount: string,
+    private transferService: TransferProcessService,
+    private catalogService: CatalogBrowserService,
+    private router: Router,
+    private notificationService: NotificationService) {
   }
 
   private static isFinishedState(state: string): boolean {
@@ -56,7 +56,7 @@ export class ContractViewerComponent implements OnInit {
   }
 
   asDate(epochSeconds?: number): string {
-    if(epochSeconds){
+    if (epochSeconds) {
       const d = new Date(0);
       d.setUTCSeconds(epochSeconds);
       return d.toLocaleDateString();
@@ -65,58 +65,76 @@ export class ContractViewerComponent implements OnInit {
   }
 
   onTransferClicked(contract: ContractAgreement) {
-    const dialogRef = this.dialog.open(CatalogBrowserTransferDialog);
+    // const dialogRef = this.dialog.open(CatalogBrowserTransferDialog);
 
-    dialogRef.afterClosed().pipe(first()).subscribe(result => {
-      const storageTypeId: string = result.storageTypeId;
-      if (storageTypeId !== 'AzureStorage') {
-        this.notificationService.showError("Only storage type \"AzureStorage\" is implemented currently!")
-        return;
-      }
-      this.createTransferRequest(contract, storageTypeId)
-        .pipe(switchMap(trq => this.transferService.initiateTransfer(trq)))
-        .subscribe(transferId => {
-          this.startPolling(transferId, contract["@id"]!);
-        }, error => {
-          console.error(error);
-          this.notificationService.showError("Error initiating transfer");
-        });
-    });
+    // dialogRef.afterClosed().pipe(first()).subscribe(result => {
+    //   const storageTypeId: string = result.storageTypeId;
+    //   if (storageTypeId !== 'AzureStorage') {
+    //     this.notificationService.showError("Only storage type \"AzureStorage\" is implemented currently!")
+    //     return;
+    //   }
+    this.createTransferRequest(contract)
+      .pipe(switchMap(trq => this.transferService.initiateTransfer(trq)))
+      .subscribe(transferId => {
+        this.startPolling(transferId, contract["@id"]!);
+      }, error => {
+        console.error(error);
+        this.notificationService.showError("Error initiating transfer");
+      });
+    // });
   }
 
   isTransferInProgress(contractId: string): boolean {
     return !!this.runningTransfers.find(rt => rt.contractId === contractId);
   }
 
-  private createTransferRequest(contract: ContractAgreement, storageTypeId: string): Observable<TransferProcessInput> {
-    return this.getContractOfferForAssetId(contract.assetId!).pipe(map(contractOffer => {
+  private createTransferRequest(contract: ContractAgreement): Observable<TransferProcessInput> {
+    return this.getContractOfferForAssetId(contract.assetId!).pipe(map((contractOffer:any) => {
 
-      const iniateTransfer : TransferProcessInput = {
+      const iniateTransfer: any = {
         assetId: contractOffer.assetId,
         connectorAddress: contractOffer.originator,
 
-        connectorId: "consumer", //doesn't matter, but cannot be null
+        connectorId: "BPNL0000000PLATO", //doesn't matter, but cannot be null
         contractId: contract.id,
         dataDestination: {
-          "type": storageTypeId,
-          account: this.homeConnectorStorageAccount, // CAUTION: hardcoded value for AzureBlob
+          "type": "HttpProxy" // CAUTION: hardcoded value for AzureBlob
           // container: omitted, so it will be auto-assigned by the EDC runtime
-        }
+        },
+        // managedResources: false,
+        privateProperties: {
+          "receiverHttpEndpoint": "http://172.28.18.215:5000/receive"
+        },
+        // protocol: "dataspace-protocol-http"
+        // transferType: {
+        //   "contentType": "application/octet-stream",
+        //   "isFinite": true
+        // }
       };
 
       return iniateTransfer;
     }));
 
   }
-
+  getCatalogUrl():string {
+    let catalogUrl = localStorage.getItem("catalogUrl")
+    if (catalogUrl !== null) {
+      return catalogUrl
+    } else {
+  
+      return "";
+    }
+  }
   /**
    * This method is used to obtain that URL of the connector that is offering a particular asset from the catalog.
    * This is a bit of a hack, because currently there is no "clean" way to get the counter-party's URL for a ContractAgreement.
    *
-   * @param assetId Asset ID of the asset that is associated with the contract.
+   * @param assetId Asset ID of the asset that is associated with the contract.Observable<ContractOffer>
    */
-  private getContractOfferForAssetId(assetId: string): Observable<ContractOffer> {
-    return this.catalogService.getContractOffers()
+  private getContractOfferForAssetId(assetId: string):  any{
+    // return Observable.toString("");
+
+    return this.catalogService.getContractOffers(this.getCatalogUrl())
       .pipe(
         map(offers => offers.find(o => o.assetId === assetId)),
         map(o => {
@@ -152,12 +170,12 @@ export class ContractViewerComponent implements OnInit {
             })
           }),
         ).subscribe(() => {
-        // clear interval if necessary
-        if (this.runningTransfers.length === 0) {
-          clearInterval(this.pollingHandleTransfer);
-          this.pollingHandleTransfer = undefined;
-        }
-      }, error => this.notificationService.showError(error))
+          // clear interval if necessary
+          if (this.runningTransfers.length === 0) {
+            clearInterval(this.pollingHandleTransfer);
+            this.pollingHandleTransfer = undefined;
+          }
+        }, error => this.notificationService.showError(error))
     }
 
   }

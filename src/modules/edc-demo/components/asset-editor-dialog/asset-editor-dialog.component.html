@@ -12,7 +12,7 @@
   <div>
     <mat-form-field class="form-field" color="accent">
       <mat-label>Content Type</mat-label>
-      <input [(ngModel)]="contenttype" matInput [placeholder]="'text/plain'">
+      <input [(ngModel)]="contenttype" matInput [value]="'HttpData'">
     </mat-form-field>
 
     <mat-form-field class="form-field" color="accent">
@@ -22,16 +22,20 @@
   </div>
 
   <div>
-    <mat-form-field class="form-field" color="accent" id="form-field-destination">
+    <!-- <mat-form-field class="form-field" color="accent" id="form-field-destination">
       <mat-label>Destination</mat-label>
       <mat-select [(ngModel)]="storageTypeId" disabled>
-        <mat-option *ngFor="let storageType of storageTypes " [value]="storageType.id">
+        <mat-option *ngFor="let storageType of storageTypes " [value]="HttpData">
           {{storageType.name}}
         </mat-option>
       </mat-select>
+    </mat-form-field> -->
+    <mat-form-field class="form-field" color="accent">
+      <mat-label>Source URL</mat-label>
+      <input [(ngModel)]="sourcePath" matInput [placeholder]="''">
     </mat-form-field>
-
-    <mat-form-field class="form-field" color="accent" id="form-field-account">
+  </div>
+    <!-- <mat-form-field class="form-field" color="accent" id="form-field-account">
       <mat-label>Account</mat-label>
       <input [(ngModel)]="account" matInput>
     </mat-form-field>
@@ -45,7 +49,7 @@
       <mat-label>Blob Name</mat-label>
       <input [(ngModel)]="blobname" matInput>
     </mat-form-field>
-  </div>
+  </div> -->
 </mat-dialog-content>
 
 

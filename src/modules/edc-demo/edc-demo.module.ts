@@ -38,6 +38,7 @@ import {SafePipe} from "./pipes/safe.pipe";
 import {ReplacePipe} from "./pipes/replace.pipe";
 import {AssetEditorDialog} from "./components/asset-editor-dialog/asset-editor-dialog.component";
 import {AssetViewerComponent} from "./components/asset-viewer/asset-viewer.component";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import {PolicyViewComponent} from "./components/policy-view/policy-view.component";
 import {
@@ -71,6 +72,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     MatListModule,
     RouterModule,
     MatProgressSpinnerModule,
+    MatAutocompleteModule
   ],
   declarations: [
     CatalogBrowserComponent,

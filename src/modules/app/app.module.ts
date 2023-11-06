@@ -22,6 +22,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {EdcApiKeyInterceptor} from "./edc.apikey.interceptor";
 import {environment} from "../../environments/environment";
 import { EdcConnectorClient } from "@think-it-labs/edc-connector-client";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { EdcConnectorClient } from "@think-it-labs/edc-connector-client";
     MatIconModule,
     MatListModule,
     EdcDemoModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule
   ],
   declarations: [
     AppComponent,
