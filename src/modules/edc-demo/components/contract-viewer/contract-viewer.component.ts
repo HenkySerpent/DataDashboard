@@ -16,6 +16,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { CatalogBrowserService } from "../../services/catalog-browser.service";
 import { Router } from "@angular/router";
 import { TransferProcessStates } from "../../models/transfer-process-states";
+import { DataFetchDialogComponent } from '../data-fetch-dialog/data-fetch-dialog.component';
 
 interface RunningTransferProcess {
   processId: string;
@@ -33,6 +34,12 @@ export class ContractViewerComponent implements OnInit {
   contracts$: Observable<ContractAgreement[]> = of([]);
   private runningTransfers: RunningTransferProcess[] = [];
   private pollingHandleTransfer?: any;
+  authToken:any;
+  responseData:any;
+  index:any;
+  buttonName:string="Transfer";
+  fetchAccess: boolean[] = [];
+  transferAccess: boolean[] = [];
 
   constructor(private contractAgreementService: ContractAgreementService,
     private assetService: AssetService,
@@ -47,6 +54,7 @@ export class ContractViewerComponent implements OnInit {
   private static isFinishedState(state: string): boolean {
     return [
       "COMPLETED",
+      "STARTED",
       "ERROR",
       "ENDED"].includes(state);
   }
@@ -64,7 +72,7 @@ export class ContractViewerComponent implements OnInit {
     return '';
   }
 
-  onTransferClicked(contract: ContractAgreement) {
+  onTransferClicked(contract: ContractAgreement,i:any ) {
     // const dialogRef = this.dialog.open(CatalogBrowserTransferDialog);
 
     // dialogRef.afterClosed().pipe(first()).subscribe(result => {
@@ -73,14 +81,20 @@ export class ContractViewerComponent implements OnInit {
     //     this.notificationService.showError("Only storage type \"AzureStorage\" is implemented currently!")
     //     return;
     //   }
-    this.createTransferRequest(contract)
-      .pipe(switchMap(trq => this.transferService.initiateTransfer(trq)))
-      .subscribe(transferId => {
-        this.startPolling(transferId, contract["@id"]!);
-      }, error => {
-        console.error(error);
-        this.notificationService.showError("Error initiating transfer");
-      });
+    this.index = i;
+      if(this.buttonName=="Fetch Data"){
+        this.fetchData();
+      }
+      else{
+        this.createTransferRequest(contract)
+        .pipe(switchMap(trq => this.transferService.initiateTransfer(trq)))
+        .subscribe(transferId => {
+          this.startPolling(transferId, contract["@id"]!);
+        }, error => {
+          console.error(error);
+          this.notificationService.showError("Error initiating transfer");
+        });
+      }
     // });
   }
 
@@ -156,18 +170,60 @@ export class ContractViewerComponent implements OnInit {
     }
 
   }
-
+  private pollRunningTransfer() {
+    return () => {
+      const isFinishedState = [
+        "STARTED",
+        "COMPLETED",
+        "ERROR",
+        "ENDED"];
+      for (const t of this.runningTransfers.values()) {
+        this.transferService.getTransferProcessState(t.processId).subscribe((tpDto: any) => {
+          if (isFinishedState.includes((tpDto['edc:state']))) {
+            if (tpDto['edc:state'] === "STARTED"|| tpDto['edc:state'] === "COMPLETED") {
+              this.runningTransfers = this.runningTransfers.filter(rtp => rtp.processId !== tpDto['@id']);
+              // this.transferAccess[this.index] = false;
+              // this.fetchAccess[this.index] = true;
+              this.notificationService.showInfo(`Transfer complete!`);
+              this.transferService.getAuthToken().subscribe((res: any) => {
+                 this.authToken = res.authCode;
+                //  this.loaderService.hide();
+              }, error => {
+                this.notificationService.showError(error);
+                // this.loaderService.hide();
+              });
+            }
+          }
+          // clear interval if necessary
+          if (this.runningTransfers.length === 0) {
+            clearInterval(this.pollingHandleTransfer);
+            this.pollingHandleTransfer = undefined;
+          }
+        }, error => {
+          this.notificationService.showError(error);
+          // this.loaderService.hide();
+        })
+      }
+    }
+  }
   private pollRunningTransfers() {
     return () => {
       from(this.runningTransfers) //create from array
         .pipe(switchMap(runningTransferProcess => this.catalogService.getTransferProcessesById(runningTransferProcess.processId)), // fetch from API
           filter(transferprocess => ContractViewerComponent.isFinishedState(transferprocess.state!)), // only use finished ones
           tap(transferProcess => {
-            // remove from in-progress
             this.runningTransfers = this.runningTransfers.filter(rtp => rtp.processId !== transferProcess.id)
             this.notificationService.showInfo(`Transfer [${transferProcess.id}] complete!`, "Show me!", () => {
-              this.router.navigate(['/transfer-history'])
+              
             })
+            // this.buttonName="Fetch Data"
+            this.transferAccess[this.index] = false;
+            this.fetchAccess[this.index] = true;
+            this.transferService.getAuthToken().subscribe((res: any) => {
+              this.authToken = res.authCode;
+           }, error => {
+             this.notificationService.showError(error);
+           });
           }),
         ).subscribe(() => {
           // clear interval if necessary
@@ -179,4 +235,19 @@ export class ContractViewerComponent implements OnInit {
     }
 
   }
+  fetchData() {
+    this.transferService.fetchData(this.authToken).subscribe((res: any) => {
+     this.responseData = res;
+     console.log("data:",res)
+    //  this.initiateBIMSTransfer();
+     const dialogRef = this.dialog.open(DataFetchDialogComponent, {maxWidth: "100%", data: this.responseData});
+     dialogRef.afterClosed().pipe(first()).subscribe(result => {
+
+     });
+    }, error => {
+      console.error(error);
+      this.notificationService.showError("Error initiating transfer");
+    });
+  }
+
 }

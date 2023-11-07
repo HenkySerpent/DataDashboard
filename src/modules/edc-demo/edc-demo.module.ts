@@ -46,6 +46,8 @@ import {
 } from "./components/policy-rule-viewer/policy-rule-viewer.component";
 import {NewPolicyDialogComponent} from "./components/new-policy-dialog/new-policy-dialog.component";
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { DataFetchDialogComponent } from './components/data-fetch-dialog/data-fetch-dialog.component';
+
 
 @NgModule({
   imports: [
@@ -93,7 +95,8 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     ContractViewerComponent,
     NewPolicyDialogComponent,
     IntroductionComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    DataFetchDialogComponent
   ],
   exports: [
     CatalogBrowserComponent,

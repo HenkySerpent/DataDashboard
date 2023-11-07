@@ -4,6 +4,8 @@ import {Injectable} from '@angular/core';
 export interface AppConfig {
   managementApiUrl: string;
   catalogUrl: string;
+  authUrl: string;
+  publicUrl: string;
   storageAccount: string;
   storageExplorerLinkTemplate: string;
   theme: string;

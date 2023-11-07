@@ -10,7 +10,10 @@
  * Do not edit the class manually.
  */
 /* tslint:disable:no-unused-variable member-ordering */
-
+import { AppConfigService } from 'src/modules/app/app-config.service';
+import {
+  HttpClient,HttpHeaders
+} from '@angular/common/http';
 import { Injectable }                      from '@angular/core';
 import { HttpResponse, HttpEvent, HttpContext }              from '@angular/common/http';
 import { Observable, from }                                        from 'rxjs';
@@ -25,7 +28,7 @@ import { TransferProcessState, TransferProcess, TransferProcessInput, QuerySpec,
 export class TransferProcessService {
     private transferProcessService = this.edcConnectorClient.management.transferProcesses;
 
-    constructor(private edcConnectorClient: EdcConnectorClient) {
+    constructor(private httpClient:HttpClient,private edcConnectorClient: EdcConnectorClient,private appConfigService: AppConfigService) {
     }
 
     /**
@@ -105,5 +108,22 @@ export class TransferProcessService {
     public queryAllTransferProcesses(querySpec?: QuerySpec): Observable<any> {
       return from(this.transferProcessService.queryAll(querySpec))
     }
+    
+    getAuthToken() {
 
+      let localVarPath = `/auth`;
+  
+      return this.httpClient.get(`${this.appConfigService.getConfig()?.authUrl}${localVarPath}`)
+    }
+  
+    fetchData(token: any) {
+      var header = { headers: new HttpHeaders().set('Authorization', token) }
+      let localVarPath = `/api/public`;
+      return this.httpClient.get(`${this.appConfigService.getConfig()?.publicUrl}${localVarPath}`, header)
+    }
+  
+    initiateBIMSTransfer(data: any) {
+      let localVarPath = `http://10.203.38.215:8080/data/receive-data`;
+      return this.httpClient.post(`${localVarPath}`, data)
+    }
 }
