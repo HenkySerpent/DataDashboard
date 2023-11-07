@@ -1,5 +1,5 @@
 <div id="wrapper">
-    <mat-card>
+    <!-- <mat-card>
       <div class="info-box">
         <mat-icon>info</mat-icon>
         <span class="text">Please install Storage Explorer for visualizing files transferred to Azure Blob Storage</span>
@@ -7,7 +7,7 @@
           <a mat-stroked-button href="https://azure.microsoft.com/features/storage-explorer/" color="accent">Install Azure Storage Explorer</a>
         </span>
       </div>
-    </mat-card>
+    </mat-card> -->
 
     <div *ngIf="transferProcesses$ | async as transferProcesses">
       <div class="table-header-container">
@@ -45,7 +45,7 @@
               <td mat-cell *matCellDef="let item">{{item.contractId}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="action">
+          <!-- <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef scope="col">Actions</th>
             <td mat-cell *matCellDef="let item" class="singleline-cell">
               <a *ngIf="showStorageExplorerLink(item)" mat-stroked-button mat-button color="accent" [href]="storageExplorerLinkTemplate | replace: item['edc:dataDestination'].properties | safe: 'url'" class="action-button">
@@ -55,7 +55,7 @@
                 <mat-icon>cancel_presentation</mat-icon> Deprovision
               </button>
             </td>
-          </ng-container>
+          </ng-container> -->
 
           <tr mat-header-row *matHeaderRowDef="columns" class="transfer-history-table-header"></tr>
           <tr mat-row *matRowDef="let row; columns: columns;"></tr>
