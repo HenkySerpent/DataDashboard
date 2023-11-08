@@ -22,6 +22,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {EdcApiKeyInterceptor} from "./edc.apikey.interceptor";
 import {environment} from "../../environments/environment";
 import { EdcConnectorClient } from "@think-it-labs/edc-connector-client";
+import { MatExpansionModule } from '@angular/material/expansion';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
@@ -38,6 +39,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatListModule,
     EdcDemoModule,
     MatSnackBarModule,
+    MatExpansionModule,
     MatAutocompleteModule
   ],
   declarations: [
