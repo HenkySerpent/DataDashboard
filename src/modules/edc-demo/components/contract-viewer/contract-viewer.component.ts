@@ -17,6 +17,7 @@ import { CatalogBrowserService } from "../../services/catalog-browser.service";
 import { Router } from "@angular/router";
 import { TransferProcessStates } from "../../models/transfer-process-states";
 import { DataFetchDialogComponent } from '../data-fetch-dialog/data-fetch-dialog.component';
+import { AppConfigService } from 'src/modules/app/app-config.service';
 
 interface RunningTransferProcess {
   processId: string;
@@ -47,6 +48,7 @@ export class ContractViewerComponent implements OnInit {
     @Inject('HOME_CONNECTOR_STORAGE_ACCOUNT') private homeConnectorStorageAccount: string,
     private transferService: TransferProcessService,
     private catalogService: CatalogBrowserService,
+    private appConfigService:AppConfigService,
     private router: Router,
     private notificationService: NotificationService) {
   }
@@ -109,7 +111,7 @@ export class ContractViewerComponent implements OnInit {
         assetId: contractOffer.assetId,
         connectorAddress: contractOffer.originator,
 
-        connectorId: "BPNL0000000PLATO", //doesn't matter, but cannot be null
+        connectorId: this.appConfigService.getConfig()?.connectorId, //doesn't matter, but cannot be null
         contractId: contract.id,
         dataDestination: {
           "type": "HttpProxy" // CAUTION: hardcoded value for AzureBlob

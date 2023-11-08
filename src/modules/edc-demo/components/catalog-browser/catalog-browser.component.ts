@@ -11,6 +11,7 @@ import { NegotiationResult } from "../../models/negotiation-result";
 import { ContractNegotiation, ContractNegotiationRequest } from "../../../mgmt-api-client/model";
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { AppConfigService } from 'src/modules/app/app-config.service';
 
 interface RunningTransferProcess {
   processId: string;
@@ -38,7 +39,7 @@ export class CatalogBrowserComponent implements OnInit {
 
   constructor(private apiService: CatalogBrowserService,
     public dialog: MatDialog,
-    private router: Router,
+    private router: Router,private appConfigService:AppConfigService,
     private notificationService: NotificationService,
     @Inject('HOME_CONNECTOR_STORAGE_ACCOUNT') private homeConnectorStorageAccount: string) {
   }
@@ -84,8 +85,18 @@ export class CatalogBrowserComponent implements OnInit {
       return "";
     }
   }
-
+  getConnectorId():string {
+    let catalogUrl = this.appConfigService.getConfig()?.connectorId
+    if (catalogUrl !== undefined) {
+      return catalogUrl
+    } else {
+  
+      return "";
+    }
+  }
 onNegotiateClicked(contractOffer: ContractOffer) {
+
+  
   // debugger
   const initiateRequest: ContractNegotiationRequest = {
     // connectorAddress: contractOffer.originator,
@@ -96,7 +107,7 @@ onNegotiateClicked(contractOffer: ContractOffer) {
       assetId: contractOffer.assetId,
       policy: contractOffer.policy,
     },
-    connectorId: 'BPNL0000000PLATO',
+    connectorId:this.getConnectorId(),
     providerId: contractOffer["dcat:service"].id
   };
 
@@ -122,8 +133,10 @@ onNegotiateClicked(contractOffer: ContractOffer) {
             if (finishedNegotiationStates.includes(updatedNegotiation.state!)) {
               let offerId = negotiation.offerId;
               this.runningNegotiations.delete(offerId);
-              if (updatedNegotiation["edc:state"] === "VERIFIED") {
+              debugger
+              if (updatedNegotiation.state === "VERIFIED") {
                 this.finishedNegotiations.set(offerId, updatedNegotiation);
+                debugger
                 this.notificationService.showInfo("Contract Negotiation complete!", "Show me!", () => {
                   this.router.navigate(['/contracts'])
                 })
