@@ -16,10 +16,11 @@ export class AssetEditorDialog implements OnInit {
   name: string = '';
   contenttype: string = '';
 
-  storageTypeId: string = 'AzureStorage';
+  storageTypeId: string = 'HttpData';
   account: string = '';
   container: string = 'src-container';
   blobname: string = '';
+  sourcePath:string = '';
 
   constructor(private dialogRef: MatDialogRef<AssetEditorDialog>,
       @Inject('STORAGE_TYPES') public storageTypes: StorageType[]) {
@@ -27,7 +28,22 @@ export class AssetEditorDialog implements OnInit {
 
   ngOnInit(): void {
   }
-
+  // const assetEntryDto =
+  // {
+  //   "@context": {},
+  //   "asset": {
+  //     "@type": "Asset",
+  //     "@id": this.id,
+  //     "properties": {
+  //       "description": this.name
+  //     }
+  //   },
+  //   "dataAddress": {
+  //     "@type": "DataAddress",
+  //     "type": "HttpData",
+  //     "baseUrl": this.sourcePath
+  //   }
+  // }
   onSave() {
     const assetInput: AssetInput = {
       "@id": this.id,
@@ -38,10 +54,11 @@ export class AssetEditorDialog implements OnInit {
       },
       dataAddress: {
         "type": this.storageTypeId,
-        "account": this.account,
-        "container": this.container,
-        "blobname": this.blobname,
-        "keyName": `${this.account}-key1`
+        "baseUrl": this.sourcePath
+        // "account": this.account,
+        // "container": this.container,
+        // "blobname": this.blobname,
+        // "keyName": `${this.account}-key1`
       }
     };
 

@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>
+  Asset Data
+</h1>
+
+<div style="max-height: 500px; height: auto; overflow-y: auto;" mat-dialog-content>
+  <pre>{{data | json}}</pre>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()" >Close</button>
+
+</div>

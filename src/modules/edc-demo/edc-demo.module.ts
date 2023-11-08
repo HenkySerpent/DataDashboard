@@ -38,6 +38,7 @@ import {SafePipe} from "./pipes/safe.pipe";
 import {ReplacePipe} from "./pipes/replace.pipe";
 import {AssetEditorDialog} from "./components/asset-editor-dialog/asset-editor-dialog.component";
 import {AssetViewerComponent} from "./components/asset-viewer/asset-viewer.component";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import {PolicyViewComponent} from "./components/policy-view/policy-view.component";
 import {
@@ -45,6 +46,8 @@ import {
 } from "./components/policy-rule-viewer/policy-rule-viewer.component";
 import {NewPolicyDialogComponent} from "./components/new-policy-dialog/new-policy-dialog.component";
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { DataFetchDialogComponent } from './components/data-fetch-dialog/data-fetch-dialog.component';
+
 
 @NgModule({
   imports: [
@@ -71,6 +74,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     MatListModule,
     RouterModule,
     MatProgressSpinnerModule,
+    MatAutocompleteModule
   ],
   declarations: [
     CatalogBrowserComponent,
@@ -91,7 +95,8 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     ContractViewerComponent,
     NewPolicyDialogComponent,
     IntroductionComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    DataFetchDialogComponent
   ],
   exports: [
     CatalogBrowserComponent,

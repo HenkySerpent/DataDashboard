@@ -23,6 +23,7 @@ import {EdcApiKeyInterceptor} from "./edc.apikey.interceptor";
 import {environment} from "../../environments/environment";
 import { EdcConnectorClient } from "@think-it-labs/edc-connector-client";
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -38,8 +39,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatListModule,
     EdcDemoModule,
     MatSnackBarModule,
-    MatExpansionModule
-
+    MatExpansionModule,
+    MatAutocompleteModule
   ],
   declarations: [
     AppComponent,

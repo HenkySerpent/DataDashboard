@@ -1,9 +1,10 @@
 <div *ngIf="contracts$ | async as contracts" id="wrapper">
   <div fxLayout="row wrap" fxLayoutAlign="start start">
-    <mat-card *ngFor="let contract of contracts" class="contract-card">
+    <mat-card *ngFor="let contract of contracts;let i=index;" class="contract-card">
       <mat-card-header>
         <mat-icon mat-card-avatar>attachment</mat-icon>
-        <mat-card-title>{{contract.id}}</mat-card-title>
+        <!-- {{contract.id}} -->
+        <mat-card-title> NISSAN-AESC</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <mat-list>
@@ -25,19 +26,37 @@
           <mat-list-item>
             <mat-icon mat-list-icon>draw</mat-icon>
             <div class="contract-property-header" matListItemTitle>Signing date</div>
-            <div class="contract-property-value" matListItemLine>{{asDate(contract.mandatoryValue('edc', 'contractSigningDate'))}}</div>
+            <div class="contract-property-value" matListItemLine>{{asDate(contract.mandatoryValue('edc',
+              'contractSigningDate'))}}</div>
           </mat-list-item>
 
           <mat-divider inset></mat-divider>
-          <mat-card-actions class="card-actions">
-            <button (click)="onTransferClicked(contract)" [disabled]="isTransferInProgress(contract.id!)" color="accent"
+          <!-- <mat-card-actions class="card-actions">
+            <button  *ngIf="!fetchAccess[i]" (click)="transferProcess(contract, i)" [disabled]="isTransferInProgress(contract['@id']!)" color="accent"
                     mat-stroked-button>
               <mat-icon>downloading</mat-icon>
               Transfer
             </button>
+            <button *ngIf="fetchAccess[i]" style="margin-left: 2rem" (click)="fetchData()" color="accent" mat-stroked-button>
+              <mat-icon>assignment</mat-icon> Fetch Data
+          </button>
+        </mat-card-actions>  -->
+          <mat-card-actions class="card-actions">
+            <button id="fetchData" *ngIf="!fetchAccess[i]" 
+              (click)="onTransferClicked(contract,i)" [disabled]="isTransferInProgress(contract.id!)" color="accent"
+              mat-stroked-button>
+              <mat-icon>downloading</mat-icon>
+              Transfer
+            </button>
+            <button id="fetchData" *ngIf="fetchAccess[i]"  (click)="fetchData()"
+              color="accent" mat-stroked-button>
+              <mat-icon>downloading</mat-icon>
+              Fetch Data
+            </button>
           </mat-card-actions>
           <mat-card-footer class="contract-card-footer">
-            <mat-progress-bar *ngIf="isTransferInProgress(contract.id!)" color="accent" mode="indeterminate"></mat-progress-bar>
+            <mat-progress-bar *ngIf="isTransferInProgress(contract.id!)" color="accent"
+              mode="indeterminate"></mat-progress-bar>
           </mat-card-footer>
 
         </mat-list>
