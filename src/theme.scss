@@ -36,17 +36,29 @@ $theme2: mat-dark-theme(
   )
 );
 
-$theme3: mat-dark-theme(
+// $theme3: mat-dark-theme(
+//   (
+//    color: (
+//     primary: mat-palette($mat-light-green),
+//     accent: mat-palette($mat-orange, A200, A100, A400),
+//     warn: mat-palette($mat-red),
+//   ),
+//    typography: $theming-material-components-typography,
+//    density: 0,
+//   )
+// );
+$theme3: mat-light-theme(
   (
-   color: (
-    primary: mat-palette($mat-light-green),
-    accent: mat-palette($mat-orange, A200, A100, A400),
-    warn: mat-palette($mat-red),
-  ),
-   typography: $theming-material-components-typography,
-   density: 0,
+    color: (
+      primary: mat-palette($mat-teal),
+      accent: mat-palette($mat-orange, A200, A100, A400),
+      warn: mat-palette($mat-red),
+    ),
+    typography: $theming-material-components-typography,
+    density: 0,
   )
 );
+
 
 @include mat.all-component-themes($theme1);
 

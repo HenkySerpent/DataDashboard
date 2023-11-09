@@ -5,9 +5,8 @@
   "protocolUrl": "http://tx-sokrates-controlplane:8084/api/v1/dsp",
   "storageAccount": "company2assets",
   "storageExplorerLinkTemplate": "storageexplorer://v=1",
-  "theme": "theme-2",
+  "theme": "theme-3",
   "publicUrl": "http://localhost:16161",
   "authUrl": "http://172.28.18.215:5000",
-
   "connectorId":"BPNL0000SOKRATES"
 }
