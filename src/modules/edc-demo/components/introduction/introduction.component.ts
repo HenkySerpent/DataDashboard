@@ -67,7 +67,8 @@ export class IntroductionComponent implements OnInit {
       console.log("incoming:",this.incomingTransfers)});
   }
   loadOutgoingTransfers() {
-    this.transferProcessService.queryAllTransferProcesses().subscribe(res => 
-      this.outgoingTransfers=res.filter(process => process.type === 'PROVIDER'));
+    this.transferProcessService.queryAllTransferProcesses().subscribe(res => {
+      this.outgoingTransfers=res.filter(process => process.type === 'PROVIDER')
+      console.log("outgoing:",this.outgoingTransfers)});
   }
 }
