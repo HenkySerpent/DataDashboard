@@ -9,7 +9,7 @@
           Transfer Processes
         </p>
         <div class="table-container">
-        <table mat-table [dataSource]="transferProcesses$" class="transfer-history-table">
+        <table mat-table [dataSource]="incomingTransfers" class="transfer-history-table">
 
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef scope="col">Id</th>
@@ -44,7 +44,7 @@
         Transfer Processes
       </p>
       <div class="table-container">
-        <table mat-table [dataSource]="transferProcesses$" class="transfer-history-table">
+        <table mat-table [dataSource]="outgoingTransfers" class="transfer-history-table">
 
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef scope="col">Id</th>
@@ -112,6 +112,14 @@
 <div id="wrapper">
   <mat-card>
     <h1>Connector Endpoint</h1>
+    <mat-form-field class="search-form-field" color="accent">
+      <mat-label>Protocol URL</mat-label>
+      <input  [value]="protocolUrl" matInput>
+      <!-- <mat-icon matPrefix>search</mat-icon>
+      <button (click)="searchText=''; onSearch()" *ngIf="searchText" mat-icon-button matSuffix>
+        <mat-icon>close</mat-icon>
+      </button> -->
+    </mat-form-field>
     <div>
     </div>
   </mat-card>

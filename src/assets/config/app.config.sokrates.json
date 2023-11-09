@@ -1,7 +1,8 @@
 {
   "apiKey": "ApiKeyDefaultValue",
-  "managementApiUrl": "http://localhost:28081/management",
-  "catalogUrl": "http://localhost:28081/management",
+  "managementApiUrl": "http://localhost:38081/management",
+  "catalogUrl": "http://localhost:38081/management",
+  "protocolUrl": "http://tx-sokrates-controlplane:8084/api/v1/dsp",
   "storageAccount": "company2assets",
   "storageExplorerLinkTemplate": "storageexplorer://v=1",
   "theme": "theme-1",

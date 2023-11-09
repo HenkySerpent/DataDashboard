@@ -10,6 +10,7 @@ export interface AppConfig {
   storageExplorerLinkTemplate: string;
   theme: string;
   connectorId:string
+  protocolUrl:string
 }
 
 @Injectable({
