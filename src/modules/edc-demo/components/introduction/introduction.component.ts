@@ -20,7 +20,7 @@ export class IntroductionComponent implements OnInit {
   policyCount$: Observable<number> = of(0);
   preconfiguredCatalogCount: number = 0;
   contractAgreementCount$: Observable<number> = of(0);
-  columns: string[] = ['id', 'state', 'connectorId', 'assetId'];
+  columns: string[] = ['id', 'state', 'assetId'];
 
   constructor(private assetService: AssetService, private policyService: PolicyService, private transferProcessService: TransferProcessService,
     private contractDefinitionService: ContractDefinitionService, private contractAgreementService: ContractAgreementService,private appConfigService:AppConfigService) {

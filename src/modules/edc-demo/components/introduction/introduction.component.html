@@ -95,18 +95,20 @@
   </mat-card>
 
   <mat-card class="count_grid">
-    <h1>{{preconfiguredCatalogCount}}</h1>
-    <p>Preconfigured Catalogs</p>
-    <div>
-    </div>
-  </mat-card>
-
-  <mat-card style="grid-column: 1/5;" class="count_grid">
+    <!-- <h1>{{preconfiguredCatalogCount}}</h1>
+    <p>Preconfigured Catalogs</p> -->
     <h1>{{contractAgreementCount$ | async}}</h1>
     <p>Contract Agreements</p>
     <div>
     </div>
   </mat-card>
+
+  <!-- <mat-card style="grid-column: 1/5;" class="count_grid">
+    <h1>{{contractAgreementCount$ | async}}</h1>
+    <p>Contract Agreements</p>
+    <div>
+    </div>
+  </mat-card> -->
 </div>
 
 <div id="wrapper">

@@ -47,11 +47,14 @@ $theme2: mat-dark-theme(
 //    density: 0,
 //   )
 // );
+
+
+
 $theme3: mat-light-theme(
   (
     color: (
-      primary: mat-palette($mat-teal),
-      accent: mat-palette($mat-orange, A200, A100, A400),
+      primary: mat.define-palette(mat.$blue-palette, 900, 800, 900),
+      accent: mat.define-palette(mat.$blue-palette, 900, 800, 900),
       warn: mat-palette($mat-red),
     ),
     typography: $theming-material-components-typography,
