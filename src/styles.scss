@@ -1,10 +1,12 @@
 @import './theme.scss';
 
-body{
+body {
   font-family: Nissan Brand, Roboto, sans-serif !important;
 }
-html, body {
-    height: 100%;
+
+html,
+body {
+  height: 100%;
 }
 
 body {
@@ -21,7 +23,40 @@ body {
   color: black;
 }
 
-.code{
-  font-family: monospace;
+.code {
+  font-family:Nissan Brand, Roboto, sans-serif !important;
+
   font-size: larger;
 }
+
+
+.dialogStyle {
+  .mat-mdc-dialog-container .mdc-dialog__surface {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.87) !important;
+    
+  }
+
+}
+// .dialogStyle {
+// .mat-mdc-dialog-container .mdc-dialog__content{
+//   color: black !important;
+// }}
+
+// ::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+//   background-color: white;
+//   color: black;
+// }
+
+// .cdk-overlay-container .dialogStyle .mat-mdc-dialog-container .mdc-dialog__surface {
+//   background-color: white;
+//   color: black !important;
+// }
+
+
+// .dialogStyle {.mdc-dialog__container .mat-mdc-dialog-content .mdc-dialog__content {
+//     background-color: white;
+//     color: rgba(0, 0, 0, 0.87) !important;
+//   }
+
+// }

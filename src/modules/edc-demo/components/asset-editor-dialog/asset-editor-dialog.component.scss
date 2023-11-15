@@ -3,6 +3,8 @@ mat-dialog-content {
 }
 
 .form-field {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     margin-right: 10px;
     width: 350px;
 }
@@ -10,3 +12,8 @@ mat-dialog-content {
 mat-card-actions {
     margin-left: 0;
 }
+.my-component {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    // ... other styles
+  }

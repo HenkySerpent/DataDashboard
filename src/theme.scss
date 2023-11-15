@@ -10,31 +10,31 @@
 $theming-material-components-primary: mat-palette($mat-teal);
 $theming-material-components-accent: mat-palette($mat-orange, A200, A100, A400);
 $theming-material-components-warn: mat-palette($mat-red);
-$theming-material-components-typography: mat.define-typography-config($font-family: 'Open Sans');
+$theming-material-components-typography: mat.define-typography-config($font-family: 'Nissan Brand, Roboto, sans-serif');
 
-$theme1: mat-dark-theme(
-  (
-   color: (
-    primary: mat-palette($mat-teal),
-    accent: mat-palette($mat-orange, A200, A100, A400),
-    warn: mat-palette($mat-red),
-  ),
-   typography: $theming-material-components-typography,
-   density: 0,
-  )
-);
+// $theme1: mat-dark-theme(
+//   (
+//    color: (
+//     primary: mat-palette(mat.$blue-palette, 900, 800, 900),
+//     accent: mat-palette(mat.$blue-palette, 900, 800, 900),
+//     warn: mat-palette($mat-red),
+//   ),
+//    typography: $theming-material-components-typography,
+//    density: 0,
+//   )
+// );
 
-$theme2: mat-dark-theme(
-  (
-   color: (
-    primary: mat-palette($mat-light-blue),
-    accent: mat-palette($mat-orange, A200, A100, A400),
-    warn: mat-palette($mat-red),
-  ),
-   typography: $theming-material-components-typography,
-   density: 0,
-  )
-);
+// $theme2: mat-dark-theme(
+//   (
+//    color: (
+//     primary: mat-palette(mat.$blue-palette, 900, 800, 900),
+//     accent: mat-palette(mat.$blue-palette, 900, 800, 900),
+//     warn: mat-palette($mat-red),
+//   ),
+//    typography: $theming-material-components-typography,
+//    density: 0,
+//   )
+// );
 
 // $theme3: mat-dark-theme(
 //   (
@@ -63,16 +63,16 @@ $theme3: mat-light-theme(
 );
 
 
-@include mat.all-component-themes($theme1);
+@include mat.all-component-themes($theme3);
 
-.theme-1 {
-  // use default
-}
+// .theme-1 {
+//   // use default
+// }
 
-.theme-2 {
-  @include mat.all-component-colors($theme2);
-}
+// .theme-2 {
+//   @include mat.all-component-colors($theme3);
+// }
 
-.theme-3 {
-  @include mat.all-component-colors($theme3);
-}
+// .theme-3 {
+//   @include mat.all-component-colors($theme3);
+// }
