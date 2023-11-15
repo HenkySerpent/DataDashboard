@@ -1,0 +1,10 @@
+@font-face {
+    font-family: Nissan Brand;
+    src: url(assets/font/Nissan-Brand-W01-Bold.ttf) format("opentype");
+
+  }
+
+  @font-face {
+    font-family: Nissan Brand;
+    src: url(assets/font/Nissan-Brand-W01-Regular.ttf) format("opentype");
+  }

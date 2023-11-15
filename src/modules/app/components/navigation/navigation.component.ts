@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -11,6 +11,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent{
+
+  @ViewChild("drawer") drawer: any;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -28,7 +30,6 @@ export class NavigationComponent{
     public titleService: Title,
     private breakpointObserver: BreakpointObserver) {
       routes.slice(0,-1).forEach((route:any)=>{
-        
         if (route?.path === "dashboard"){
           this.dashboardRoute = route;
         }else if(route?.data?.isConsumerMode){
@@ -37,5 +38,9 @@ export class NavigationComponent{
           this.providerRoutes.push(route)
         }
       })
+  }
+
+  sidenavOptionsClicked(){
+    console.log(this.drawer);
   }
 }
