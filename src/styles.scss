@@ -38,6 +38,26 @@ body {
   }
 
 }
+.page-card{
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border-radius: 10px !important;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  height: 85%;
+  // padding-top: 1rem;
+}
+.title-toolbar{
+  border-top-right-radius: 10px !important;
+  border-top-left-radius: 10px !important;
+}
+.mat-toolbar.mat-primary{
+  border-top-right-radius: 10px !important;
+  border-top-left-radius: 10px !important;
+
+}
+
 // .dialogStyle {
 // .mat-mdc-dialog-container .mdc-dialog__content{
 //   color: black !important;

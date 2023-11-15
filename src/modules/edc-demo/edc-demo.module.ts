@@ -47,6 +47,7 @@ import {
 import {NewPolicyDialogComponent} from "./components/new-policy-dialog/new-policy-dialog.component";
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { DataFetchDialogComponent } from './components/data-fetch-dialog/data-fetch-dialog.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { DataFetchDialogComponent } from './components/data-fetch-dialog/data-fe
     MatListModule,
     RouterModule,
     MatProgressSpinnerModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatToolbarModule
   ],
   declarations: [
     CatalogBrowserComponent,

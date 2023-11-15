@@ -12,6 +12,7 @@ import { ContractNegotiation, ContractNegotiationRequest } from "../../../mgmt-a
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { AppConfigService } from 'src/modules/app/app-config.service';
+import { Title } from '@angular/platform-browser';
 
 interface RunningTransferProcess {
   processId: string;
@@ -38,7 +39,7 @@ export class CatalogBrowserComponent implements OnInit {
   private pollingHandleNegotiation?: any;
 
   constructor(private apiService: CatalogBrowserService,
-    public dialog: MatDialog,
+    public dialog: MatDialog,public titleService: Title,
     private router: Router,private appConfigService:AppConfigService,
     private notificationService: NotificationService,
     @Inject('HOME_CONNECTOR_STORAGE_ACCOUNT') private homeConnectorStorageAccount: string) {
