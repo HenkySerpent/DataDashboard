@@ -15,10 +15,19 @@
   top: 0;
   z-index: 1;
 }
-// .title{
-// /* UI Properties */
-// background: var(--unnamed-color-eeeeee) 0% 0% no-repeat padding-box;
-// background: #EEEEEE 0% 0% no-repeat padding-box;
-// border-radius: 15px;
-// opacity: 1;
-// }
+.title{
+  display: flex;
+  justify-content: center;
+}
+.logo{
+  margin-top: 5rem;
+  padding-top: 3rem;
+  margin-bottom: 4rem;
+}
+.heading{
+  background-color: white;
+}
+.titleFont{
+  font-weight: 600;
+  font-size: larger;
+}

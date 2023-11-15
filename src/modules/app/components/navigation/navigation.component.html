@@ -1,9 +1,11 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
-    <mat-toolbar class="title">NISSAN EDC</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item [routerLink]="[dashboardRoute.path]">
+    <mat-toolbar class="title">
+      <img src="../../../../assets/logo/Nissan.svg" class="logo">
+    </mat-toolbar>
+    <mat-nav-list >
+      <a mat-list-item style="margin-top: 3rem ;" [routerLink]="[dashboardRoute.path]">
         <mat-icon matListItemIcon>{{dashboardRoute.data?.icon}}</mat-icon>
         {{dashboardRoute.data?.title ?? dashboardRoute.path}}
     </a>
@@ -34,12 +36,26 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar class="heading">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      <!-- <span>{{titleService.getTitle()}}</span> -->
+      <!-- <mat-toolbar class=""> -->
+        <img width="50px" style="margin: 1rem;" src="../../../../assets/logo/Nissan.svg" class="">
+      <!-- </mat-toolbar> -->
+      <span class="titleFont">NISSAN EDC</span>
+
+    </mat-toolbar>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        >
+        <!-- <mat-icon aria-label="Side nav toggle icon">menu</mat-icon> -->
+      </button>
       <span>{{titleService.getTitle()}}</span>
+      <!-- <span>NISSAN EDC</span> -->
+
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

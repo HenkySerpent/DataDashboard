@@ -1,0 +1,125 @@
+$base-font-size: 1rem;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1.125rem;
+$small-font-size: 0.875rem;
+
+// color codes
+$c-white: #ffffff;
+$c-link-dark: #000000;
+$c-bg-dark: #000000;
+$c-shadow: #6a749a1f;
+$c-card-shadow: #6a749a1a;
+$c-vertical-divider: #d0d4dd;
+$c-horizontal-divider: #d8d8d8;
+$c-sticky-table-shadow: #e5e6e8;
+$c-vertical-divider-light: #ececf4;
+$c-horizontal-divider: #eeeeee;
+$c-text-dark: #000000;
+$c-grey-1: #343434;
+$c-grey-2: #4c4c4c;
+$c-grey-3: #666666;
+$c-grey-4: #cacfd5;
+$c-text-primary: #c3002f;
+$c-heading-bg-light: #eeeeee;
+$c-heading-bg-dark: #343434;
+$c-grey-5: #c1c1c1;
+$c-grey-7: #f8f8f8;
+$c-grey-6: #ededed;
+$c-grey-8: #e4e9ef;
+$c-card-header-bg-light: #e9ecf4;
+$c-red: $c-text-primary;
+$c-footer-text-grey: #8a8a8a;
+$c-light-red: #fcf2f4;
+$c-dark-blue: #2f3349;
+$c-static-label-dark: #5c5c5c;
+$c-static-label-light: #585858;
+$c-table-header-blue: #e9ecf4;
+
+$c-blue-fang: #2c5597;
+$c-light-border: #dcdfeb;
+
+//chip
+$c-chip-blue-font: #2c5597;
+$c-chip-blue-bg: #bac8e7;
+$c-chip-green-text: #0f9309;
+$c-chip-green-bg: #e1faed;
+$c-chip-yellow-bg: #f5d7a8;
+$c-chip-yellow-font: #d16900;
+$c-chip-issued-font: #2986a8;
+$c-chip-issued-bg: #9de1fa;
+$c-chip-working-font: #a88613;
+$c-chip-working-bg: #fffe7b;
+$c-chip-stopwork-font: #aa39aa;
+$c-chip-stopwork-bg: #f8bff8;
+$c-chip-continued-font: #1e911e;
+$c-chip-continued-bg: #abfdab;
+$c-chip-completed-font: #b22929;
+$c-chip-completed-bg: #ffacac;
+$c-chip-closed-font: #a26217;
+$c-chip-closed-bg: #ffe26e;
+$c-chip-canceled-font: #72767b;
+$c-chip-canceled-bg: #d5d9dc;
+$c-chip-draft-font: #8a8a8a;
+$c-chip-draft-border: #8a8a8a;
+$c-chip-requested-font: #8a8a8a;
+$c-chip-requested-border: #8a8a8a;
+$c-chip-default-font: #8a8a8a;
+$c-chip-default-bg: #ededed;
+
+$c-dialog-card-border: #eeeeee;
+$c-dialog-card-shadow: #6a749a40;
+$c-overlay-dark: #1d254a;
+$c-overlay-border: #707070;
+$c-form-field-label: #666666;
+$c-form-field-label-disabled: #000000bc;
+$c-from-field-border: #ebebeb;
+$c-required: #c3002f;
+$c-required-bright: #ff0000;
+$c-form-field-select-value: #000000bc;
+$c-form-field-disabled-value: #8a8a8a;
+$c-form-field-disabled-bg: #f8f8f8; //#EBEBEB;
+$c-form-field-disabled-border: #ebebeb; //#f8f8f8; //#EBEBEB;
+$c-slide-toggle-bg: #c1c1c1;
+$c-form-field-select-option-hover-bg: #f8f8f8;
+$c-time-input-border: #b2b2b2;
+$c-calendar-date: #343434;
+$c-calendar-date-hover-bg: #ededed;
+$c-snackbar-warn: #ee9400;
+$c-snackbar-success: #44B13F;
+$c-snackbar-danger: #c40a36;
+$c-stop: #c3002f;
+$c-completed: #0f9309;
+$c-footer-bg-yellow: #fffdea;
+$c-loader-bg: #c3002f40;
+$c-line-container-blue: #2d4f86;
+$c-line-container-box_shadow: #0000000d;
+$c-link: #3b74ff;
+$c-ribbon-grey-bg: #f5f6f7;
+$c-dark-checkbox: #000000;
+$c-header-bg-secondary: #edeff4;
+$c-header-bg-primary: #e4e7f0;
+
+$c-curved-header-tile-bg1: #e4e7f0;
+$c-border-bottom-tree-search: #a7bbdd;
+$c-loader-border: #44b13f;
+$c-loader-border-top: #f3f3f3;
+
+$c-prime-ng-table-col-border: #d6d9e1;
+
+//buttons
+$c-primary-btn-bg: #000000;
+$c-primary-btn-shadow: #00000040;
+$c-primary-btn-shadow-new: #00000020;
+$c-primary-btn-bg-hover: #4c4c4c;
+$c-primary-btn-bg-disabled: #eeeeee;
+$c-primary-btn: #ffffff;
+$c-primary-btn-disabled: #8a8a8a;
+$c-secondary-btn-bg: #ffffff;
+$c-secondary-btn-border: #000000;
+$c-secondary-btn: #000000;
+$c-text-btn: #000000;
+$c-text-btn-bg-hover: #f8f8f8;
+*{
+    font-size: medium;
+}
