@@ -1,3 +1,7 @@
+<mat-card class="page-card">
+  <mat-toolbar color="primary" class="title-toolbar">
+    <span>Assets</span>
+  </mat-toolbar>
 <div *ngIf="filteredAssets$ | async as assets" id="wrapper">
   <div class="container">
     <mat-form-field appearance="fill" appearance="outline" class="search-form-field" color="accent">
@@ -57,3 +61,4 @@
     </mat-card>
   </div>
 </div>
+</mat-card>

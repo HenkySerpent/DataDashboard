@@ -76,7 +76,8 @@ import { EdcInfoDialogComponent } from './components/edc-info-dialog/edc-info-di
     MatListModule,
     RouterModule,
     MatProgressSpinnerModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatToolbarModule
   ],
   declarations: [
     CatalogBrowserComponent,
