@@ -47,6 +47,8 @@ import {
 import {NewPolicyDialogComponent} from "./components/new-policy-dialog/new-policy-dialog.component";
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { DataFetchDialogComponent } from './components/data-fetch-dialog/data-fetch-dialog.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { EdcInfoDialogComponent } from './components/edc-info-dialog/edc-info-dialog.component';
 
 
 @NgModule({
@@ -96,7 +98,8 @@ import { DataFetchDialogComponent } from './components/data-fetch-dialog/data-fe
     NewPolicyDialogComponent,
     IntroductionComponent,
     ConfirmationDialogComponent,
-    DataFetchDialogComponent
+    DataFetchDialogComponent,
+    EdcInfoDialogComponent
   ],
   exports: [
     CatalogBrowserComponent,
@@ -107,7 +110,8 @@ import { DataFetchDialogComponent } from './components/data-fetch-dialog/data-fe
     PolicyRuleViewerComponent,
     IntroductionComponent,
     NewPolicyDialogComponent,
-    ContractViewerComponent
+    ContractViewerComponent,
+    EdcInfoDialogComponent
   ]
 })
 export class EdcDemoModule {

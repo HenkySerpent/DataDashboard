@@ -3,7 +3,7 @@
 }
 
 .sidenav {
-  width: 300px;
+  width: 400px;
 }
 
 .sidenav .mat-toolbar {
@@ -15,10 +15,28 @@
   top: 0;
   z-index: 1;
 }
-// .title{
-// /* UI Properties */
-// background: var(--unnamed-color-eeeeee) 0% 0% no-repeat padding-box;
-// background: #EEEEEE 0% 0% no-repeat padding-box;
-// border-radius: 15px;
-// opacity: 1;
-// }
+.title{
+  display: flex;
+  justify-content: center;
+}
+.logo{
+  margin-left: 2rem;
+  width: 3.125rem;
+}
+.heading{
+  display: flex;
+  background-color: white;
+  height: 5.5rem;
+  border-bottom: solid lightgrey 2px;
+  justify-content: space-between;
+
+  .heading-start{
+    display: flex;
+    align-items: center;
+  }
+}
+.titleFont{
+  font-weight: 600;
+  font-size: larger;
+  margin-left:3rem;
+}

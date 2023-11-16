@@ -24,6 +24,7 @@ import {environment} from "../../environments/environment";
 import { EdcConnectorClient } from "@think-it-labs/edc-connector-client";
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     EdcDemoModule,
     MatSnackBarModule,
     MatExpansionModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDialogModule
   ],
   declarations: [
     AppComponent,
