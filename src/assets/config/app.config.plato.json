@@ -8,6 +8,5 @@
   "theme": "theme-3",
   "publicUrl": "http://localhost:26262",
   "authUrl": "http://172.28.18.215:5000",
-
   "connectorId":"BPNL0000000PLATO"
 }

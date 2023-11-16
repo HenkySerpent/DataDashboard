@@ -45,17 +45,17 @@
           <mat-list-item>
             <mat-icon matListItemIcon>category</mat-icon>
             <div class="asset-property-name" matListItemTitle>Type</div>
-            <div matListItemLine>{{contractOffer.properties.type}}</div>
+            <div  class="asset-property-name" matListItemLine>{{contractOffer.properties.type}}</div>
           </mat-list-item>
           <mat-list-item>
             <mat-icon matListItemIcon>key</mat-icon>
             <div class="asset-property-name" matListItemTitle>Id</div>
-            <div matListItemLine>{{contractOffer.assetId}}</div>
+            <div class="asset-property-name" matListItemLine>{{contractOffer.assetId}}</div>
           </mat-list-item>
           <mat-list-item *ngIf="contractOffer.originator">
-            <mat-icon matListItemIcon>link</mat-icon>
+            <mat-icon class="asset-property-name"  matListItemIcon>link</mat-icon>
             <div class="asset-property-name" matListItemTitle>Originator</div>
-            <div matListItemLine>{{contractOffer.originator}}</div>
+            <div class="asset-property-name" matListItemLine>{{contractOffer.originator}}</div>
           </mat-list-item>
         </mat-list>
 

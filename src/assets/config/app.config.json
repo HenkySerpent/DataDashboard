@@ -1,12 +1,12 @@
 {
   "apiKey": "ApiKeyDefaultValue",
-  "managementApiUrl": "http://localhost:30729/management",
-  "catalogUrl": "http://localhost:38081/management",
+  "managementApiUrl": "http://localhost:28081/management",
+  "catalogUrl": "http://localhost:28081/management",
   "protocolUrl": "http://tx-sokrates-controlplane:8084/api/v1/dsp",
   "storageAccount": "company2assets",
   "storageExplorerLinkTemplate": "storageexplorer://v=1",
-  "theme": "theme-4",
-  "publicUrl": "http://localhost:16161",
+  "theme": "theme-3",
+  "publicUrl": "http://localhost:26262",
   "authUrl": "http://172.28.18.215:5000",
-  "connectorId":"BPNL0000SOKRATES"
+  "connectorId":"BPNL0000000PLATO"
 }

@@ -35,18 +35,18 @@
                     <mat-list-item>
                         <mat-icon matListItemIcon>policy</mat-icon>
                         <div class="policy-name" matListItemTitle>Access policy</div>
-                        <div matListItemLine>{{contractDefinition.accessPolicyId}}</div>
+                        <div  class="policy-name" matListItemLine>{{contractDefinition.accessPolicyId}}</div>
                     </mat-list-item>
                     <mat-list-item>
                         <mat-icon matListItemIcon>policy</mat-icon>
                         <div class="policy-name" matListItemTitle>Contract policy</div>
-                        <div matListItemLine>{{contractDefinition.contractPolicyId}}</div>
+                        <div  class="policy-name" matListItemLine>{{contractDefinition.contractPolicyId}}</div>
                     </mat-list-item>
                 </mat-list>
 
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
-                        <mat-panel-title>
+                        <mat-panel-title  class="policy-name">
                             Selectors
                         </mat-panel-title>
                     </mat-expansion-panel-header>
@@ -54,7 +54,7 @@
                         <mat-list-item *ngFor="let criterion of contractDefinition.assetsSelector">
                             <mat-icon matListItemIcon>check</mat-icon>
                             <!-- mandatoryValue method needs to be used because of this bug: https://github.com/Think-iT-Labs/edc-connector-client/issues/94 -->
-                            <div matListItemLine>{{criterion.mandatoryValue('edc', 'operandLeft')}} {{criterion.mandatoryValue('edc', 'operator')}} {{criterion.mandatoryValue('edc', 'operandRight')}}</div>
+                            <div  class="policy-name" matListItemLine>{{criterion.mandatoryValue('edc', 'operandLeft')}} {{criterion.mandatoryValue('edc', 'operator')}} {{criterion.mandatoryValue('edc', 'operandRight')}}</div>
                         </mat-list-item>
                     </mat-list>
                 </mat-expansion-panel>

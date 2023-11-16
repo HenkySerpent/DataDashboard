@@ -4,30 +4,30 @@
     <!-- <mat-toolbar class="title">NISSAN EDC</mat-toolbar> -->
     <mat-nav-list>
       <a mat-list-item [routerLink]="[dashboardRoute.path]">
-        <mat-icon matListItemIcon>{{dashboardRoute.data?.icon}}</mat-icon>
-        {{dashboardRoute.data?.title ?? dashboardRoute.path}}
+        <h4><mat-icon matListItemIcon>{{dashboardRoute.data?.icon}}</mat-icon>
+        <span style="font-weight: bold;padding: 1rem;">{{dashboardRoute.data?.title ?? dashboardRoute.path}} </span></h4>
     </a>
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <h3>Provide</h3>
+              <h2>Provide</h2>
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <a mat-list-item *ngFor="let route of providerRoutes" [routerLink]="[route.path]">
-            <mat-icon matListItemIcon>{{route.data?.icon}}</mat-icon>
-            {{route.data?.title ?? route.path}}
+          <a class="options" mat-list-item *ngFor="let route of providerRoutes" [routerLink]="[route.path]">
+            <mat-icon style="font-weight: bold;">{{route.data?.icon}}</mat-icon>
+            <span style="font-weight: bold;padding: 1rem;">{{route.data?.title ?? route.path}}</span>
         </a>
         </mat-expansion-panel>
         <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <h3>Consume</h3>
+              <h2>Consume</h2>
             </mat-panel-title>
           </mat-expansion-panel-header>
           <a mat-list-item *ngFor="let route of consumerRoutes" [routerLink]="[route.path]">
-            <mat-icon matListItemIcon>{{route.data?.icon}}</mat-icon>
-            {{route.data?.title ?? route.path}}
+            <mat-icon style="font-weight: bold;" >{{route.data?.icon}}</mat-icon>
+            <span style="font-weight: bold;padding: 1rem;">{{route.data?.title ?? route.path}}</span>
         </a>
         </mat-expansion-panel>
       </mat-accordion>
