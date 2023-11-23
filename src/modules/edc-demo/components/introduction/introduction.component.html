@@ -1,117 +1,176 @@
-<mat-card class="page-card">
-  <mat-toolbar color="primary" class="title-toolbar">
-    <span>Dashboard</span>
-  </mat-toolbar>
-<div id="home">
-
-  <div id="dashboard_wrapper">
-    <div class="transfer_container">
-      <mat-card class="transfer_grid">
-        <div class="transfer_grid-head">
-          <h3>Incoming Data</h3>
-            <!-- <span>Transfer Processes</span> -->
+<div class="dashboard_flex">
+  <mat-card class="page-card">
+    <mat-toolbar class="title-toolbar">
+      <span>Dashboard</span>
+    </mat-toolbar>
+    <div id="home">
+  
+      <div id="dashboard_wrapper">
+        <div class="transfer_container">
+          <mat-card class="transfer_grid">
+            <div class="transfer_grid-head">
+              <h3>Incoming Data</h3>
+              <!-- <span>Transfer Processes</span> -->
+            </div>
+            <div class="table-container">
+              <table mat-table [dataSource]="incomingTransfers" class="transfer-history-table">
+  
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef scope="col">Id</th>
+                  <td mat-cell *matCellDef="let item">{{item.id}}</td>
+                </ng-container>
+  
+                <ng-container matColumnDef="state">
+                  <th mat-header-cell *matHeaderCellDef scope="col">State</th>
+                  <td mat-cell *matCellDef="let item">{{item.state}}</td>
+                </ng-container>
+  
+                <ng-container matColumnDef="connectorId">
+                  <th mat-header-cell *matHeaderCellDef scope="col">ConnectorId</th>
+                  <td mat-cell *matCellDef="let item">{{item.connectorId}}</td>
+                </ng-container>
+  
+                <ng-container matColumnDef="assetId">
+                  <th mat-header-cell *matHeaderCellDef scope="col">AssetId</th>
+                  <td mat-cell *matCellDef="let item">{{item.assetId}}</td>
+                </ng-container>
+  
+  
+                <tr mat-header-row *matHeaderRowDef="columns" class="transfer-history-table-header"></tr>
+                <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+              </table>
+            </div>
+          </mat-card>
+          <mat-card class="transfer_grid">
+            <div class="transfer_grid-head">
+              <h3>Outgoing Data</h3>
+              <!-- <span>Transfer Processes</span> -->
+            </div>
+            <div class="table-container">
+              <table mat-table [dataSource]="outgoingTransfers" class="transfer-history-table">
+  
+                <ng-container matColumnDef="id">
+                  <th mat-header-cell *matHeaderCellDef scope="col">Id</th>
+                  <td mat-cell *matCellDef="let item">{{item.id}}</td>
+                </ng-container>
+  
+                <ng-container matColumnDef="state">
+                  <th mat-header-cell *matHeaderCellDef scope="col">State</th>
+                  <td mat-cell *matCellDef="let item">{{item.state}}</td>
+                </ng-container>
+  
+                <ng-container matColumnDef="connectorId">
+                  <th mat-header-cell *matHeaderCellDef scope="col">ConnectorId</th>
+                  <td mat-cell *matCellDef="let item">{{item.connectorId}}</td>
+                </ng-container>
+  
+                <ng-container matColumnDef="assetId">
+                  <th mat-header-cell *matHeaderCellDef scope="col">AssetId</th>
+                  <td mat-cell *matCellDef="let item">{{item.assetId}}</td>
+                </ng-container>
+  
+                <tr mat-header-row *matHeaderRowDef="columns" class="transfer-history-table-header"></tr>
+                <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+              </table>
+            </div>
+          </mat-card>
         </div>
-        <div class="table-container">
-        <table mat-table [dataSource]="incomingTransfers" class="transfer-history-table">
-
-          <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef scope="col">Id</th>
-            <td mat-cell *matCellDef="let item">{{item.id}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="state">
-            <th mat-header-cell *matHeaderCellDef scope="col">State</th>
-            <td mat-cell *matCellDef="let item">{{item.state}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="connectorId">
-            <th mat-header-cell *matHeaderCellDef scope="col">ConnectorId</th>
-            <td mat-cell *matCellDef="let item">{{item.connectorId}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="assetId">
-            <th mat-header-cell *matHeaderCellDef scope="col">AssetId</th>
-            <td mat-cell *matCellDef="let item">{{item.assetId}}</td>
-          </ng-container>
-
-
-          <tr mat-header-row *matHeaderRowDef="columns" class="transfer-history-table-header"></tr>
-          <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-        </table>
+  
+        <mat-card class="count_grid">
+          <h3>Data Offerings</h3>
+          <h1 class="num-text">{{ dataOfferingCount$ | async}}</h1>
+          <button class="dashboard-buttons" mat-raised-button color="primary" (click)="routeTo('contract-definitions')">
+            <h3>View Offerings</h3>
+          </button>
+        </mat-card>
+  
+        <mat-card class="count_grid">
+          <h3>Assets</h3>
+          <h1 class="num-text">{{assetCount$ | async}}</h1>
+          <button class="dashboard-buttons" mat-raised-button color="primary" (click)="routeTo('my-assets')">
+            <h3>Create Asset</h3>
+          </button>
+          <div>
+          </div>
+        </mat-card>
+  
+        <mat-card class="count_grid">
+          <h3>Policies</h3>
+          <h1 class="num-text">{{ policyCount$ | async}}</h1>
+          <button class="dashboard-buttons" mat-raised-button color="primary" (click)="routeTo('policies')">
+            <h3>View Policies</h3>
+          </button>
+          <div>
+          </div>
+        </mat-card>
+  
+        <mat-card class="count_grid">
+          <h3>Contract Agreements</h3>
+          <h1 class="num-text">{{  contractAgreementCount$ | async}}</h1>
+          <button class="dashboard-buttons" mat-raised-button color="primary" (click)="routeTo('contracts')">
+            <h3>View Contracts</h3>
+          </button>
+          <div>
+          </div>
+        </mat-card>
+  
+        <!-- <mat-card style="grid-column: 1/5;" class="count_grid">
+      <h1>{{contractAgreementCount$ | async}}</h1>
+      <p>Contract Agreements</p>
+      <div>
+      </div>
+    </mat-card> -->
+      </div>
+  
     </div>
-    </mat-card>
-    <mat-card class="transfer_grid">
-      <div class="transfer_grid-head">
-        <h3>Outgoing Data</h3>
-          <!-- <span>Transfer Processes</span> -->
+  </mat-card>
+
+  <div style="display: flex; width: 25%; height: 100%; flex-direction: column;   margin-top: 2rem;
+  margin-left: 1rem;
+  margin-bottom: 20px;    
+  margin-right: 1rem;">
+    <div class="connector-info">
+      <div class="connector-info-head">
+        <mat-icon>link</mat-icon>
+        <h1>  Nissan EDC<br> Connector</h1>
+        <div style="color: rgb(101, 224, 101); display: flex; align-items: center; justify-content: center;"><span style="font-size: 2em;">●</span>&nbsp; &nbsp;running
+        </div>
       </div>
-      <div class="table-container">
-        <table mat-table [dataSource]="outgoingTransfers" class="transfer-history-table">
-
-          <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef scope="col">Id</th>
-            <td mat-cell *matCellDef="let item">{{item.id}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="state">
-            <th mat-header-cell *matHeaderCellDef scope="col">State</th>
-            <td mat-cell *matCellDef="let item">{{item.state}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="connectorId">
-            <th mat-header-cell *matHeaderCellDef scope="col">ConnectorId</th>
-            <td mat-cell *matCellDef="let item">{{item.connectorId}}</td>
-          </ng-container>
-
-          <ng-container matColumnDef="assetId">
-            <th mat-header-cell *matHeaderCellDef scope="col">AssetId</th>
-            <td mat-cell *matCellDef="let item">{{item.assetId}}</td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="columns" class="transfer-history-table-header"></tr>
-          <tr mat-row *matRowDef="let row; columns: columns;"></tr>
-        </table>
+    
+      <div style="display: flex; flex-direction: column; padding: 0px 40px 0px 40px;">
+        <h3>Connector Endpoint</h3>
+          <mat-form-field class="search-form-field">
+          <mat-label>Protocol URL</mat-label>
+          <input  [value]="protocolUrl" matInput>
+          <!-- <mat-icon matPrefix>search</mat-icon>
+          <button (click)="searchText=''; onSearch()" *ngIf="searchText" mat-icon-button matSuffix>
+            <mat-icon>close</mat-icon>
+          </button> -->
+        </mat-form-field>
+        <button  mat-raised-button color="primary" [cdkCopyToClipboard]="protocolUrl" (click)="changeText()">
+          <h4>{{isCopied ? "Copied!":"Copy to clipboard" }}</h4>
+        </button>
       </div>
-    </mat-card>
+  
+  
+  
+    </div>
+
+    <div class="edc-info">
+      <h3 style="padding-left: 20px;">About Eclipse Dataspace Connector </h3>
+      <p style="padding: 0 40px 0 40px;">
+
+      The Eclipse Dataspace Connector provides a framework for sovereign, inter-organizational data exchange.
+      It implements the International Data Spaces standard (IDS) as well as relevant protocols associated with
+      GAIA-X.
+      The connector is designed in an extensible way in order to support alternative protocols and integrate in
+      various ecosystems.
+
+      </p>
+
+    </div>
   </div>
 
-  <mat-card class="count_grid">
-    <h1>{{dataOfferingCount$ | async}}</h1>
-    <p>Your Data Offerings</p>
-    <div>
-    </div>
-  </mat-card>
-
-  <mat-card class="count_grid">
-    <h1>{{assetCount$ | async}}</h1>
-    <p>Your Assets</p>
-    <div>
-    </div>
-  </mat-card>
-
-  <mat-card class="count_grid">
-    <h1>{{policyCount$ | async}}</h1>
-    <p>Your Policies</p>
-    <div>
-    </div>
-  </mat-card>
-
-  <mat-card class="count_grid">
-    <!-- <h1>{{preconfiguredCatalogCount}}</h1>
-    <p>Preconfigured Catalogs</p> -->
-    <h1>{{contractAgreementCount$ | async}}</h1>
-    <p>Contract Agreements</p>
-    <div>
-    </div>
-  </mat-card>
-
-  <!-- <mat-card style="grid-column: 1/5;" class="count_grid">
-    <h1>{{contractAgreementCount$ | async}}</h1>
-    <p>Contract Agreements</p>
-    <div>
-    </div>
-  </mat-card> -->
+ 
+  
 </div>
-
-</div>
-</mat-card>

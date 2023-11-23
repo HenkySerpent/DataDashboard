@@ -1,6 +1,6 @@
 <mat-card class="page-card">
-  <mat-toolbar color="primary">
-    <span>{{titleService.getTitle()}}</span>
+  <mat-toolbar class="title-toolbar">
+    <span style="color: white;">{{titleService.getTitle()}}</span>
   </mat-toolbar>
 <div *ngIf="filteredContractOffers$ | async as filteredContractOffers" id="wrapper">
   <div class="container">

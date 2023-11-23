@@ -44,13 +44,19 @@ body {
   margin-right: 1rem;
   border-radius: 10px !important;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  height: 100%;
+}
+
+.dashboard_flex{
+  display: flex;
   height: 85%;
-  // padding-top: 1rem;
+
 }
 .title-toolbar{
   border-top-right-radius: 10px !important;
   border-top-left-radius: 10px !important;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  background-image: linear-gradient(to left top, #12a0eb, #0089da, #0073c8, #005db5, #0d47a1);
+  color: white;
 }
 .mat-toolbar.mat-primary{
   border-top-right-radius: 10px !important;
@@ -80,3 +86,22 @@ body {
 //   }
 
 // }
+
+
+.search-form-field{
+
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input,  
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label,
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading, .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch, .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing  {
+    border-color: white !important;
+    color: white !important;
+  }
+
+  :hover{
+      border-color: white !important;
+      color: white !important;
+    }
+
+
+}
+

@@ -49,6 +49,8 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { DataFetchDialogComponent } from './components/data-fetch-dialog/data-fetch-dialog.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { EdcInfoDialogComponent } from './components/edc-info-dialog/edc-info-dialog.component';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+
 
 
 @NgModule({
@@ -77,7 +79,8 @@ import { EdcInfoDialogComponent } from './components/edc-info-dialog/edc-info-di
     RouterModule,
     MatProgressSpinnerModule,
     MatAutocompleteModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ClipboardModule
   ],
   declarations: [
     CatalogBrowserComponent,
