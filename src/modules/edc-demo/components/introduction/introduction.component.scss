@@ -111,7 +111,7 @@ a {
     height: 15%;
     width: 90%;
     border-radius: 10px;
-    background-color: #294fbf !important;
+    background-color: #942424 !important;
 }
 
 .table-container {
@@ -130,8 +130,7 @@ a {
 .connector-info{
     width: 100%;
     height: 65%;
-    background-image: linear-gradient(to left top, #12a0eb, #0089da, #0073c8, #005db5, #0d47a1);
-    border-radius: 10px;
+    background-image: linear-gradient(to right bottom, #942424, #aa3b39, #c0514f, #d66766, #eb7d7d);    border-radius: 10px;
     color: white;
     display: flex;
     flex-direction: column;
@@ -154,8 +153,7 @@ a {
 }
 
 .edc-info{
-    background-image: linear-gradient(to left top, #12a0eb, #0089da, #0073c8, #005db5, #0d47a1);
-    height: 35%;
+    background-image: linear-gradient(to right bottom, #942424, #aa3b39, #c0514f, #d66766, #eb7d7d);    height: 35%;
     width:100%;
     color: white;
     border-radius: 10px;

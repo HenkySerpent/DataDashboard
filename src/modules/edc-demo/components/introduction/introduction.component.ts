@@ -40,6 +40,8 @@ export class IntroductionComponent implements OnInit {
 
     }
   ]
+
+  
   constructor(private assetService: AssetService, private policyService: PolicyService, private transferProcessService: TransferProcessService,
     private contractDefinitionService: ContractDefinitionService, private contractAgreementService: ContractAgreementService,private appConfigService:AppConfigService,
     private router: Router) {

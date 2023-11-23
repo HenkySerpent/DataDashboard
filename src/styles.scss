@@ -55,14 +55,15 @@ body {
 .title-toolbar{
   border-top-right-radius: 10px !important;
   border-top-left-radius: 10px !important;
-  background-image: linear-gradient(to left top, #12a0eb, #0089da, #0073c8, #005db5, #0d47a1);
-  color: white;
+  background-image: linear-gradient(to right bottom, #942424, #aa3b39, #c0514f, #d66766, #eb7d7d);  color: white;
 }
 .mat-toolbar.mat-primary{
   border-top-right-radius: 10px !important;
   border-top-left-radius: 10px !important;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
+
+
 
 // .dialogStyle {
 // .mat-mdc-dialog-container .mdc-dialog__content{
