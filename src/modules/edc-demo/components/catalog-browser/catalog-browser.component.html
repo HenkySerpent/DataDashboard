@@ -4,7 +4,7 @@
   </mat-toolbar>
 <div *ngIf="filteredContractOffers$ | async as filteredContractOffers" id="wrapper">
   <div class="container">
-    <mat-form-field class="search-form-field" color="accent">
+    <mat-form-field>
       <mat-label>Search catalog</mat-label>
       <input (input)="onSearch()" [(ngModel)]="searchText" matInput>
       <mat-icon matPrefix>search</mat-icon>
@@ -27,7 +27,7 @@
     </mat-form-field>
     <!-- <mat-form-field> -->
 
-    <button style="height: 3.5rem;" mat-raised-button color="primary" (click)="addCatalog()">Add catalog</button>
+    <button style="height: 3.5rem; color:white;    background-color: #942424;" mat-raised-button (click)="addCatalog()">Add catalog</button>
     <!-- </mat-form-field> -->
   </div>
 
